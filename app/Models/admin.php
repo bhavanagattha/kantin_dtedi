@@ -5,24 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class admin extends Model
+class Admin extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
     protected $table = 'admin';
     
-    protected $primaryKey = 'name';
+    // protected $primaryKey = 'name';
 
-    protected $fillable = ['name', 'password'];
+    protected $fillable = ['name', 'password', 'profile_picture'];
 
     public function attendances()
     {
-        return $this->hasMany(attendances::class, 'admin_name', 'name');
+        return $this->hasMany(Attendances::class, 'admin_name', 'name');
     }
 
     public function logs()
     {
-        return $this->hasMany(log::class, 'admin_name', 'name');
+        return $this->hasMany(Log::class, 'admin_name', 'name');
     }
 }

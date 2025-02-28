@@ -6,9 +6,11 @@ use App\Enums\Payment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class receipts extends Model
+class Receipts extends Model
 {
     use HasFactory;
+
+    protected $table = 'receipts';
 
     protected $casts = [
         'payment_type' => Payment::class
@@ -18,11 +20,11 @@ class receipts extends Model
 
     public function cashier()
     {
-        return $this->belongsTo(cashier::class);
+        return $this->belongsTo(Cashier::class);
     }
 
     public function orders()
     {
-        return $this->hasMany(orders::class, 'receipts_id');
+        return $this->hasMany(Orders::class, 'receipts_id');
     }
 }

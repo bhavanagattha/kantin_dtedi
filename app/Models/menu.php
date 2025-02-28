@@ -6,9 +6,11 @@ use App\Enums\MenuType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class menu extends Model
+class Menu extends Model
 {
     use HasFactory;
+
+    protected $table = 'menu';
 
     protected $casts = [
         'menu_type' => MenuType::class,
@@ -18,11 +20,11 @@ class menu extends Model
 
     public function supplier()
     {
-        return $this->belongsTo(supplier::class);
+        return $this->belongsTo(Supplier::class);
     }
 
     public function orders()
     {
-        return $this->hasMany(orders::class);
+        return $this->hasMany(Orders::class);
     }
 }

@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class shifts extends Model
+class Shifts extends Model
 {
     use HasFactory;
+
+    protected $table = 'shifts';
 
     protected $fillable = ['start_time', 'end_time'];
 
     public function schedules()
     {
-        return $this->hasMany(schedules::class);
+        return $this->hasMany(Schedules::class);
     }
 }

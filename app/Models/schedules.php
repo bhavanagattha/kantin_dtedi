@@ -6,9 +6,11 @@ use App\Enums\Days;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class schedules extends Model
+class Schedules extends Model
 {
     use HasFactory;
+
+    protected $table = 'schedules';
 
     protected $casts = [
         'type' => Days::class
@@ -18,16 +20,16 @@ class schedules extends Model
 
     public function shift()
     {
-        return $this->belongsTo(shifts::class);
+        return $this->belongsTo(Shifts::class);
     }
 
     public function cashier()
     {
-        return $this->belongsTo(cashier::class);
+        return $this->belongsTo(Cashier::class);
     }
 
     public function attendances()
     {
-        return $this->hasMany(attendances::class);
+        return $this->hasMany(Attendances::class);
     }
 }
