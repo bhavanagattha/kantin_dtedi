@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\admin;
+use Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -13,9 +15,15 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('admin')->insert([
-            'name' => 'Admin User',
-            'password' => bcrypt('password'),
+        // DB::table('admin')->insert([
+        //     'name' => 'Admin User',
+        //     'password' => bcrypt('password'),
+        //     'profile_picture' => "path"
+        // ]);
+
+        admin::create([
+            'name' => 'AdminKantin',
+            'password' => Hash::make('katasandi'),
             'profile_picture' => "path"
         ]);
     }

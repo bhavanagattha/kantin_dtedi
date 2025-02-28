@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->integer('stock');
-            $table->integer('supplier_id');
+            $table->foreignId('id_supplier') -> constrained('supplier');
             $table->enum('food_type', ['food', 'drink', 'snack']);
             $table->string('menu_picture');
             $table->timestamps();

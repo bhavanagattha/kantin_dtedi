@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('stock', function (Blueprint $table) {
             $table->id();
-            $table->integer("menu_id");
-            $table->integer("cashier_id");
+            $table->foreignId('id_menu') -> constrained('menu');
+            $table->foreignId('id_cashiers') -> constrained('cashier');
             $table->integer("previous_stock");
             $table->integer("end_stock");
             $table->timestamps();

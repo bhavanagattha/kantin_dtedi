@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->boolean('attendance');
-            $table->integer('schedule_id');
-            $table->integer('cashier_id');
+            $table->foreignId('id_schedules')->constrained('schedules');
+            $table->foreignId('id_cashiers')->constrained('cashier');
             $table->date('date');
             $table->timestamps();
         });

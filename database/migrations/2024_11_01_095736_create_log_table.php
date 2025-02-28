@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('log', function (Blueprint $table) {
             $table->id();
-            $table->integer('cashier_id');
-            $table->string('admin_name');
+            $table->foreignId('id_cashier') -> constrained('cashier');
+            $table->foreignId('id_admin') -> constrained('admin');
             $table->string('action');
             $table->timestamps();
         });

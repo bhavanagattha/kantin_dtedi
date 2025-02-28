@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('receipts', function(Blueprint $table) {
             $table->id();
             $table->enum('payment_type', ['qris', 'cash']);
-            $table->integer('cashier_id');
+            $table->foreignId('cashier_id')->constrained('cashier');
             $table->integer('payment');
             $table->integer('returns');
             $table->timestamps();

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->integer('shift_id');
-            $table->integer('cashier_id');
-            $table->enum('day', ['senin', 'selasa', 'rabu', 'kamis', 'jumat']);
+            $table->foreignId('id_shifts') -> constrained('shifts');
+            $table->foreignId('id_cashiers') -> constrained('cashier');
+            $table->enum('day', ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY']);
             $table->timestamps();
         });
     }
